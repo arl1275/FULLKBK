@@ -1,0 +1,20 @@
+export interface ServiceSheet {
+    id : number,
+    name : string,
+    description : string,
+    client : string,
+    date : string,
+    status : string,
+    service : string,
+    technician : string,
+    price : number,
+    payment : string,
+    paymentMethod : string,
+    paymentDate : string,
+    paymentStatus : string,
+    paymentAmount : number,
+    paymentCurrency : string,
+    paymentMethodId : number,
+    paymentMethodType : string,
+    id_headservicesheet : number //this is to referes to the head
+}
