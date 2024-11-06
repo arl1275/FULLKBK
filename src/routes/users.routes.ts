@@ -1,8 +1,13 @@
-import { Request, Response, NextFunction, Router } from "express";
+import { Request, Response, Router } from "express";
+import { loginController, logoutController, upuserController, valuserController } from "../controller/user.controller";
 const routeruser = Router();
 
-routeruser.get('/log');
+routeruser.get('/log', loginController);
 
-routeruser.get('/logout');
+routeruser.get('/logout', logoutController);
 
-routeruser.post('/upuser');
+routeruser.post('/upuser', upuserController);
+
+routeruser.get('/adminvaluser', valuserController);
+
+export default routeruser;
