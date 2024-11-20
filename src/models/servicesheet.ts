@@ -4,17 +4,11 @@ export interface ServiceSheet {
     description : string,
     client : string,
     date : string,
-    status : string,
-    service : string,
     technician : string,
     price : number,
-    payment : string,
-    paymentMethod : string,
     paymentDate : string,
-    paymentStatus : string,
-    paymentAmount : number,
-    paymentCurrency : string,
-    paymentMethodId : number,
-    paymentMethodType : string,
-    id_headservicesheet : number //this is to referes to the head
+    paymentAmount : string,
+    id_estados : number,
+    id_paymentMethod : number,
+    id_headservicesheet : number
 }
