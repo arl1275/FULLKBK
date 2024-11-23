@@ -19,7 +19,7 @@ export const genTocken = (role : string, user : string, password : string) =>{
   try {
     const payload = {role_ : role, user_ : user, password_ : password};
     const key = ReKey(role);
-    console.log('key lood :', key)
+    //console.log('key GEN:', key, role)
     if(key != null)
        return jwt.sign(payload, key, { expiresIn: '2h' });
     else
@@ -39,13 +39,12 @@ export const valToken = (role: string | undefined, token: string | undefined): o
       }
   
       const key = ReKey(role); 
-      console.log('data de key ', key, role)
+      //console.log('key VAL:', key, role)
       if (!key) {
         console.log('Clave no encontrada para el rol especificado');
         return null;
       }
   
-      // Verifica el token con la clave obtenida
       return jwt.verify(token, key, { algorithms: ['HS256'] }) as object;
     } catch (error) {
       console.error('Error al verificar el token:', error);

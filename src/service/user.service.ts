@@ -4,9 +4,9 @@ import { genTocken, valToken } from "../seg/access";
 export const LogService = (req : Request, res : Response) => {
     try {
         const {role, user, password } = req.body;
-        console.log(req.body)
+        //console.log(req.body)
         const token = genTocken(role, user, password );
-        token != null ? res.status(200).json({ token_ : token}) : res.status(500).json({ message : 'error al generar un token_'});
+        token != null ? res.status(200).json({ token_ : token }) : res.status(500).json({ message : 'error al generar un token_'});
     } catch (error) {
         console.log(error);
         res.status(500).json({ message : 'Error al generar tocken'});

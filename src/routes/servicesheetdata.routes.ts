@@ -1,12 +1,14 @@
-import { Request, Response, NextFunction, Router } from "express";
+import { Router } from "express";
+import { verificarToken } from "../middleware/middleware.user";
+import { createservicesheetdatacontroller, updateservicesheetdatacontroller, deletservicesheetdatacontroller, getsservicesheetdatacontroller } from "../controller/servicesheetdata.controller";
 const servicesheetdatarouter = Router();
 
-servicesheetdatarouter.get('/headsheet', );
+servicesheetdatarouter.get('/getservicesheetdata', verificarToken, getsservicesheetdatacontroller);
 
-servicesheetdatarouter.get('/updateheadsheet',);
+servicesheetdatarouter.put('/updateservicesheetdata', verificarToken, updateservicesheetdatacontroller);
 
-servicesheetdatarouter.post('/createheadsheet',);
+servicesheetdatarouter.post('/createservicesheetdata', verificarToken, createservicesheetdatacontroller);
 
-servicesheetdatarouter.get('/deletecreateheadsheet',);
+servicesheetdatarouter.delete('/deleteservicesheetdata', verificarToken, deletservicesheetdatacontroller);
 
 export default servicesheetdatarouter;

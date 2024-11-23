@@ -1,18 +1,18 @@
 import { Request, Response, NextFunction, Router } from "express";
 import { verificarToken } from "../middleware/middleware.user";
-import { createssheetcontroller } from "../controller/servicesheet.controller";
+import { createssheetcontroller, updatesheetcontroller, deletesheetcontroller, getssheetcontroller } from "../controller/servicesheet.controller";
 const routershet = Router();
 
 //delete Service Order
-routershet.get('/dsheet', verificarToken, );
+routershet.get('/deleteservicesheet', verificarToken, deletesheetcontroller);
 
 //Generate Service Order
-routershet.get('/gsheet', verificarToken, createssheetcontroller);
+routershet.get('/getservicesheet', verificarToken, getssheetcontroller);
 
 //Read Service Order
-routershet.post('/rsheet', verificarToken,);
+routershet.post('/createservicesheet', verificarToken, createssheetcontroller);
 
 //Update Service Order
-routershet.put('/upsheet', verificarToken,);
+routershet.put('/updateservicesheet', verificarToken, updatesheetcontroller);
 
 export default routershet;

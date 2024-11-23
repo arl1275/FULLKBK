@@ -13,7 +13,7 @@ export const verificarToken = (req: Request, res: Response, next: NextFunction):
       return;
     }
     const payload = valToken(rol, token);
-    
+    //console.log('data', payload);
     if (!payload) {
       res.status(403).json({ mensaje: 'Token inválido o expirado.' });
       return;
