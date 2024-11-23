@@ -1,12 +1,14 @@
-import { Request, Response, NextFunction, Router } from "express";
-const coutingservicerouter = Router();
+import { Router } from "express";
+import { verificarToken } from "../middleware/middleware.user";
+import { createcoutingcontroller, updatecoutingcontroller, deletecoutingcontroller, getscoutingcontroller } from "../controller/counting.controller";
+const coutingrouter = Router();
 
-coutingservicerouter.get('/headsheet', );
+coutingrouter.get('/getcouting', verificarToken, getscoutingcontroller );
 
-coutingservicerouter.get('/updateheadsheet',);
+coutingrouter.put('/updatecouting', verificarToken, updatecoutingcontroller);
 
-coutingservicerouter.post('/createheadsheet',);
+coutingrouter.post('/createcouting', verificarToken, createcoutingcontroller);
 
-coutingservicerouter.get('/deletecreateheadsheet',);
+coutingrouter.delete('/deletecouting', verificarToken, deletecoutingcontroller);
 
-export default coutingservicerouter;
+export default coutingrouter;

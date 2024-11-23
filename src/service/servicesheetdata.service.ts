@@ -10,7 +10,7 @@ export const createservicesheetdata = async ( req : Request, res : Response) => 
         }
         const _date_: string = getFormattedDate();
         const query = `INSERT INTO servicesheetdata
-        (service, description, _date, pic, id_servicesheet, id_estado)
+        (service, descripcion, _date, pic, id_servicesheet, id_estado)
         VALUES ($1, $2, TO_TIMESTAMP($3, 'DD/MM/YY HH24:MI:SS'), $4, $5, $6) 
         returning id;`;
 
@@ -55,11 +55,11 @@ export const updateservicesheetdata = async (req: Request, res: Response) => {
     try {
         const { _id_, descripcion, service, id_estado } = req.body;
 
-        if (!_id_ || !descripcion || !service ) {
+        if (!_id_ || !descripcion || !service || !id_estado) {
             return res.status(400).json({ message: 'Datos inválidos o faltantes' });
         }
 
-        const query = `UPDATE servicesheet SET service = $2, description = $3, id_estado = $3 WHERE id = $1; `;
+        const query = `UPDATE servicesheetdata SET service = $2, descripcion = $3, id_estado = $4 WHERE id = $1; `;
         const result = await connDB.query(query, [_id_, service, descripcion, id_estado]);
 
         // Verificar resultado
@@ -83,7 +83,7 @@ export const deleteservicesheetdata = async ( req : Request, res : Response) =>{
         }
 
         const _date_: string = getFormattedDate();
-        const query = `UPDATE servicesheet SET stado = 1 WHERE id = $1;`;
+        const query = `UPDATE servicesheetdata SET id_estado = 1 WHERE id = $1;`;
         const result = await connDB.query(query, [_id_]);
 
         if (result.rows && result.rows[0]) {
